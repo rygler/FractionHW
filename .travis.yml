@@ -1,0 +1,10 @@
+language: csharp
+solution: Fraction.sln
+install:
+  - nuget restore Fraction.sln
+  - nuget install NUnit.ConsoleRunner -Version 3.6.0 -OutputDirectory testrunner 
+script:
+  - xbuild /p:Configuration=Release Fraction.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.6.0/tools/nunit3-console.exe ./Fraction.Test/bin/Release/Fraction.Test.dll
+notifications:
+  email: false
