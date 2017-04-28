@@ -78,6 +78,13 @@ namespace Fraction.Test
         }
 
         [Test]
+        public void Negate()
+        {
+            var fraction = -_fractionA;
+            fraction.Numerator.Should().Be(-3);
+        }
+
+        [Test]
         public void Multiply()
         {
             var fraction = _fractionA * _fractionB;
@@ -189,6 +196,16 @@ namespace Fraction.Test
 
             b = _fractionB >= _fractionA;
             b.Should().Be(false);
+        }
+
+        [Test]
+        public void Modulo()
+        {
+            var remainder = _fractionA % _fractionB;
+            remainder.Should().Be(7);
+
+            remainder = -_fractionA % _fractionB;
+            remainder.Should().Be(-7);
         }
     }
 }
