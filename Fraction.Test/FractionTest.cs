@@ -81,7 +81,8 @@ namespace Fraction.Test
         public void Negate()
         {
             var fraction = -_fractionA;
-            fraction.Numerator.Should().Be(-3);
+            fraction.Numerator.Should().Be(-_fractionA.Numerator);
+            fraction.Denominator.Should().Be(_fractionA.Denominator);
         }
 
         [Test]
@@ -202,10 +203,11 @@ namespace Fraction.Test
         public void Modulo()
         {
             var remainder = _fractionA % _fractionB;
-            remainder.Should().Be(7);
+            remainder.Should().Be(.15555555555555555555556);
 
             remainder = -_fractionA % _fractionB;
-            remainder.Should().Be(-7);
+            remainder.Should().Be(-.15555555555555555555556);
+
         }
     }
 }

@@ -90,7 +90,7 @@ namespace Fraction
             return new Fraction(numerator, denominator).Reduce();
         }
 
-        public static Fraction operator -(Fraction f) 
+        public static Fraction operator -(Fraction f)
         {
             return new Fraction(-f.Numerator, f.Denominator);
         }
@@ -135,12 +135,14 @@ namespace Fraction
             return f1 > f2 || f1 == f2;
         }
 
-        public static int operator %(Fraction f1, Fraction f2)
+        public static double operator %(Fraction f1, Fraction f2)
         {
-            var divisionResult = f1 / f2;
-            var remainder = divisionResult.Numerator % divisionResult.Denominator;
+            return (double) f1 %  f2;
+        }
 
-            return remainder;
+        public bool IsNegative()
+        {
+            return Numerator < 0 || Denominator < 0;
         }
     }
 }
