@@ -144,5 +144,26 @@ namespace Fraction
         {
             return Numerator < 0 || Denominator < 0;
         }
+
+        protected bool Equals(Fraction other)
+        {
+            return Numerator == other.Numerator && Denominator == other.Denominator;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Fraction) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (Numerator * 397) ^ Denominator;
+            }
+        }
     }
 }
